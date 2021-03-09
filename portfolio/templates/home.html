@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'csshome/home.css' %}">
+</head>
+<body>    
+<section id="navbar">
+<a href = "{% static 'portfolio/Resume.pdf'%}">Resume</a>
+<a href = "{% url 'blog:all_blogs'%}">Blogs</a>
+<a href= "https://www.linkedin.com/in/vanshika-panwar-06a737178?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3jGOvZhkTGOH1EX5nTXCVA%3D%3D">Linkedin</a>
+<h1 id="name" >Vanshika Panwar</h1>  
+</section>
+<br>
+<br>
+
+<div>
+    <img src= "{% static 'portfolio/vansh.JPG'%}" height="30%" width="25%">
+</div>
+<h1 id="Portfolio">Portfolio</h1>
+<section id="projects">
+{% for p in projects %}
+<b id="Pimage">
+<img src = "{{p.image.url}}"  height="30%" width="40%" >
+</b>
+<h2 id="projectname">{{p.title}}</h2>
+{{p.disription}}
+<br>
+{{p.date}}
+<br>
+<br>
+<br>
+{% endfor %}
+</section>
+</body>
+</html>

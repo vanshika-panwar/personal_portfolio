@@ -1,0 +1,25 @@
+{% extends 'base2.html'%}
+{% block content %}
+
+
+<h2>Vanshika Panwar has written {{bb.count}} blog{{bb.count|pluralize}}</h2>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blogs</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cssblog/all_blogs.css'%}">
+</head>
+{% for b in bb %}
+<a href="{% url 'blog:detail' b.id %}"><h2>{{b.title}}</h2></a>
+
+{{b.disription|safe|truncatechars:70}}
+<br>
+<h5>
+{{b.date|date:'M d Y'|upper}}
+</h5>
+<br>
+<!-- <a>url="{{b.url}}" link</a> -->
+
+{%endfor%}
+{% endblock %}
